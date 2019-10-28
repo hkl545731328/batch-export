@@ -1,0 +1,59 @@
+{
+    "appenders": {
+        "infoFile": {
+            "type": "file",
+            "filename": "logs/default.log",
+            "maxLogSize": 10485760,
+            "numBackups": 3
+        },
+        "errorFile": {
+            "type": "file",
+            "filename": "logs/errors.log"
+        },
+        "infos": {
+            "type": "logLevelFilter",
+            "level": "INFO",
+            "maxLevel": "WARN",
+            "appender": "infoFile"
+        },
+        "errors": {
+            "type": "logLevelFilter",
+            "level": "ERROR",
+            "appender": "errorFile"
+        },
+        "downloadSuccessFile": {
+            "type": "file",
+            "filename": "logs/downloadSuccess.log",
+            "maxLogSize": 10485760,
+            "numBackups": 3
+        },
+        "downloadErrorsFile": {
+            "type": "file",
+            "filename": "logs/downloadErrors.log"
+        },
+        "downloadSuccess": {
+            "type": "logLevelFilter",
+            "level": "INFO",
+            "maxLevel": "WARN",
+            "appender": "downloadSuccessFile"
+        },
+        "downloadErrors": {
+            "type": "logLevelFilter",
+            "level": "ERROR",
+            "appender": "downloadErrorsFile"
+        },
+        "console": {
+            "type": "console"
+        }
+    },
+    "categories": {
+        "default": {
+            "appenders": ["console", "errors", "infos"],
+            "level": "INFO"
+        },
+        "download": {
+            "appenders": ["console", "downloadErrors", "downloadSuccess"],
+            "level": "INFO"
+        }
+    }
+}
